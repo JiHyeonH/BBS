@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <title>{{ page_title }}</title>
+
+    <!-- JQuery CDN -->
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+
+    {% block html_header %}
+    {% endblock %}
+  </head>
+  <body>
+    {% block html_body %}
+    {% endblock %}
+  </body>
+</html>
+{% comment %}템플릿 확장하기 : 모든 html에 어차피 쓸 Jquery, Bootstrap을 base로 추가해 줄 수 있도록 하는 헤드 코드는 위처럼 만들 수 있다.{% endcomment %}
+{% comment %}여기서 확장 구간은 head 부분 블락구간과 body 부분 블락구간으로 두 가지가 가능하다.{% endcomment %}

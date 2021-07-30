@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% block html_body %}
+
+<div class="container">
+
+    <h1>새글 작성</h1>
+
+    <form {% comment %}action = "" : 현재 페이지로 request를 진행{% endcomment %}
+          method="post">
+        {% csrf_token %}
+
+        {% comment %}{{ board_form }}{% endcomment %}
+        {% comment %}그냥 form 객체를 가져와서 쓰면 CSS가 적용되지 않는 형태로 나온다.{% endcomment %}
+        {% comment %}pip install django-bootstrap4 진행 후, settings.py에서 INSTALLED_APPS에 'bootstrap4' 등록{% endcomment %}
+        {% bootstrap_form board_form %} {% comment %}위에서 load bootstrap4 해줘야 함{% endcomment %}
+        <div align="right">
+            <button type="submit"
+                    class="btn btn-primary">새글 등록</button>
+            <button type="button"
+                    class="btn btn-warning"
+                    onclick = history.back()>취소</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

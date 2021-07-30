@@ -1,0 +1,36 @@
+{% extends 'base.html' %} {% comment %}기본틀 사용하기 위해 base.html을 이용한다.{% endcomment %}
+{% block html_body %} {% comment %}body 부분을 확장하기 위한 방법{% endcomment %}
+<script src="/static/js/menu_btn.js"></script>  {% comment %}버튼에 대한 함수를 넣기 위한 자바스크립트{% endcomment %}
+<div class="container">
+  <h1>Bulletin Board System(BBS)</h1>
+  <button type="button"
+          class="btn btn-primary"
+          id="new_post_btn">새글 작성</button>
+  <div class="m-1"></div>
+
+  <table class="table table-hover">
+    <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">글제목</th>
+      <th scope="col">글작성자</th>
+      <th scope="col">글작성일</th>
+      <th scope="col">댓글수</th>
+      <th scope="col">좋아요</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for post in posts %}
+    <tr>
+      <th scope="row">{{ post.id }}</th>
+      <td><a href="/bbs/{{ post.id }}/detail/">{{ post.b_title }}</a></td>
+      <td>{{ post.b_author }}</td>
+      <td>{{ post.b_date }}</td>
+      <td>{{ post.b_comment_count }}</td>
+      <td>{{ post.b_like_count }}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}
