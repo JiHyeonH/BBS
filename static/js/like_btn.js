@@ -3,7 +3,8 @@ $(function(event){
         $.ajax({
             async : true,   // default : true. 비동기화 시킬 것인가? 네
                             // 일처리 중에 다른 일처리의 접수도 가능.
-            url : 'bbs/<board_objects.id>/detail/',
+            url : 'http://localhost:8000/bbs/<board_objects.id>/detail/',
+            url : 'http://127.0.0.1:8000/bbs/<board_objects.id>/detail/',
             type : 'POST',
             timeout : 3000, // 단위는 ms
             data : {

@@ -41,8 +41,8 @@ def b_detail(request, post_id):
     })
 
 
-def b_fix(request):
-    board_form = BoardForm(request.POST)
-    new_post = board_form.save(commit=False)
-    new_post.save()
-    return redirect('bbs:b_list')
+def b_fix(request, post_id):
+    board_objects = get_object_or_404(Board, pk=post_id)
+    return render(request, 'bbs/fix.html', {
+        'board_objects': board_objects
+    })

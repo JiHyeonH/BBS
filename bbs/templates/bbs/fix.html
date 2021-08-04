@@ -6,7 +6,7 @@
 <script src="/static/js/like_btn.js"></script>
 <div class="container">
 
-    <h1>글 내용보기</h1>
+    <h1>글 수정하기</h1>
 
     <form {% comment %}action={% url 'bbs:b_list' %}{% comment %}action = "" : 현재 페이지로 request를 진행{% endcomment %}
           method="post">
@@ -17,7 +17,7 @@
         </div>
         <p></p>
         <div>
-            글 제목 : {{ board_objects.b_title }}
+            글 제목 : <input type="text" placeholder="{{ board_objects.b_title }}">
         </div>
         <p></p>
         <div class="row">
@@ -38,10 +38,8 @@
                     id="fix_btn">수정하기</button>
             <button type="reset"
                     class="btn btn-danger"
-                    id="del_btn">삭제하기</button>
-            <button type="button"
-                    class="btn btn-warning"
-                    id="like_btn">좋아요</button>
+                    id="del_btn"
+                    onclick="history.back()">취소</button>
         </div>
     </form>
 </div>
