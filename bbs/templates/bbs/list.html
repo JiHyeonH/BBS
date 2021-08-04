@@ -3,11 +3,14 @@
 <script src="/static/js/menu_btn.js"></script>  {% comment %}버튼에 대한 함수를 넣기 위한 자바스크립트{% endcomment %}
 <div class="container">
   <h1>Bulletin Board System(BBS)</h1>
-  <button type="button"
-          class="btn btn-primary"
+  <div class="row">
+    <button type="button"
+          class="btn btn-primary col-1"
           id="new_post_btn">새글 작성</button>
-  <div class="m-1"></div>
-
+    <div class="col-7"></div>
+    <input type="text" class="col-3">
+    <button type="button" class="col-1">검색</button>
+  </div>
   <table class="table table-hover">
     <thead class="thead-dark">
     <tr>

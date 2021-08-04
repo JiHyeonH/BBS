@@ -1,9 +1,7 @@
 {% extends 'base.html' %}
 {% load bootstrap4 %}
 {% block html_body %}
-<script src="/static/js/fix_btn.js"></script>
-<script src="/static/js/del_btn.js"></script>
-<script src="/static/js/like_btn.js"></script>
+<script src="/static/js/fix_ok_btn.js"></script>
 <div class="container">
 
     <h1>글 수정하기</h1>
@@ -35,10 +33,9 @@
         <div align="right">
             <button type="submit"
                     class="btn btn-info"
-                    id="fix_btn">수정하기</button>
+                    id="fix_ok_btn">수정하기</button>
             <button type="reset"
                     class="btn btn-danger"
-                    id="del_btn"
                     onclick="history.back()">취소</button>
         </div>
     </form>

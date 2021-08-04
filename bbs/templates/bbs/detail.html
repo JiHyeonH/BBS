@@ -30,13 +30,13 @@
             <div class="col-6">좋아요 : {{ board_objects.b_like_count }}</div>
         </div>
         <p></p>
-        <textarea class="container-fluid"
-                  placeholder="{{ board_objects.b_content }}"></textarea>
+        <textarea readonly class="container-fluid">{{ board_objects.b_content }}</textarea>
         <div align="right">
-            <button type="submit"
+            <button type="button"
                     class="btn btn-info"
-                    id="fix_btn">수정하기</button>
-            <button type="reset"
+                    id="fix_btn"
+                    data-pageid={{ board_objects.id }}>수정하기</button>
+            <button type="button"
                     class="btn btn-danger"
                     id="del_btn">삭제하기</button>
             <button type="button"
