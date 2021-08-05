@@ -8,5 +8,6 @@ urlpatterns = [
     path('list/', views.b_list, name='b_list'),
     path('create/', views.b_create, name='b_create'),
     path('<int:post_id>/detail/', views.b_detail, name='b_detail'),
-    path('<int:post_id>/fix/', views.b_fix, name='b_fix')
+    path('<int:post_id>/fix/', views.b_fix, name='b_fix'),
+    path('<int:post_id>/delete', views.b_delete, name='b_delete')
 ]

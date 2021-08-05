@@ -42,7 +42,22 @@ def b_detail(request, post_id):
 
 
 def b_fix(request, post_id):
+
     board_objects = get_object_or_404(Board, pk=post_id)
-    return render(request, 'bbs/fix.html', {
-        'board_objects': board_objects
-    })
+    if request.method == 'POST':
+        board_form = BoardForm(request.POST, instance=board_objects)
+        # board_form.b_author = board_objects.b_author  # 글 수정에서 작성자 정보는 변동되지 않게 만들어서, 폼에 입력되야 할 작성자 변수가 누락된건가..?
+        if board_form.is_valid():  # 정상이면
+            board_objects = board_form.save(commit=False)
+            board_objects.save()
+            return redirect('bbs:b_detail', post_id=board_objects.id)
+    else:
+        board_form = BoardForm(instance=board_objects)
+        return render(request, 'bbs/fix.html', {'board_form': board_form, 'board_objects':board_objects})
+
+
+def b_delete(request, post_id):
+
+    board_objects = get_object_or_404(Board, pk=post_id)
+    board_objects.delete()
+    return redirect('bbs:b_list')

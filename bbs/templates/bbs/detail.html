@@ -1,48 +1,52 @@
 {% extends 'base.html' %}
-{% load bootstrap4 %}
 {% block html_body %}
+<script src="/static/js/del_btn.js"></script>
 <script src="/static/js/fix_btn.js"></script>
 <script src="/static/js/del_btn.js"></script>
 <script src="/static/js/like_btn.js"></script>
 <div class="container">
 
     <h1>글 내용보기</h1>
-
+    <p></p>
+    <div>
+        글 번호 : {{ board_objects.id }}
+    </div>
+    <p></p>
+    <div>
+        글 제목 : {{ board_objects.b_title }}
+    </div>
+    <p></p>
+    <div class="row">
+        <div class="col-6">작성자 : {{ board_objects.b_author }}</div>
+        <div class="col-6">작성일 : {{ board_objects.b_date }}</div>
+    </div>
+    <p></p>
+    <div class="row">
+        <div class="col-6">글 내용</div>
+        <div class="col-6">좋아요 : {{ board_objects.b_like_count }}</div>
+    </div>
+    <p></p>
+    <textarea readonly class="container-fluid">{{ board_objects.b_content }}</textarea>
+    <div align="right">
+        <button type="button"
+                class="btn btn-success"
+                onclick="location.href='/bbs/list/'">목록으로</button>
+        <button type="button"
+                class="btn btn-info"
+                id="fix_btn"
+                data-pageid={{ board_objects.id }}>수정하기</button>
+        <button type="button"
+                class="btn btn-danger"
+                id="del_btn"
+                data-pageid={{ board_objects.id }}>삭제하기</button>
+        <button type="button"
+                class="btn btn-warning"
+                id="like_btn">좋아요</button>
+    </div>
     <form {% comment %}action={% url 'bbs:b_list' %}{% comment %}action = "" : 현재 페이지로 request를 진행{% endcomment %}
           method="post">
         {% csrf_token %}
-        <p></p>
-        <div>
-            글 번호 : {{ board_objects.id }}
-        </div>
-        <p></p>
-        <div>
-            글 제목 : {{ board_objects.b_title }}
-        </div>
-        <p></p>
-        <div class="row">
-            <div class="col-6">작성자 : {{ board_objects.b_author }}</div>
-            <div class="col-6">작성일 : {{ board_objects.b_date }}</div>
-        </div>
-        <p></p>
-        <div class="row">
-            <div class="col-6">글 내용</div>
-            <div class="col-6">좋아요 : {{ board_objects.b_like_count }}</div>
-        </div>
-        <p></p>
-        <textarea readonly class="container-fluid">{{ board_objects.b_content }}</textarea>
-        <div align="right">
-            <button type="button"
-                    class="btn btn-info"
-                    id="fix_btn"
-                    data-pageid={{ board_objects.id }}>수정하기</button>
-            <button type="button"
-                    class="btn btn-danger"
-                    id="del_btn">삭제하기</button>
-            <button type="button"
-                    class="btn btn-warning"
-                    id="like_btn">좋아요</button>
-        </div>
+
     </form>
 </div>
 {% endblock %}

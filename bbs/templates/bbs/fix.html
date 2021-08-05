@@ -14,26 +14,15 @@
             글 번호 : {{ board_objects.id }}
         </div>
         <p></p>
-        <div>
-            글 제목 : <input type="text" placeholder="{{ board_objects.b_title }}">
-        </div>
-        <p></p>
         <div class="row">
-            <div class="col-6">작성자 : {{ board_objects.b_author }}</div>
             <div class="col-6">작성일 : {{ board_objects.b_date }}</div>
-        </div>
-        <p></p>
-        <div class="row">
-            <div class="col-6">글 내용</div>
             <div class="col-6">좋아요 : {{ board_objects.b_like_count }}</div>
         </div>
         <p></p>
-        <textarea class="container-fluid"
-                  placeholder="{{ board_objects.b_content }}"></textarea>
+        {% bootstrap_form board_form %}
         <div align="right">
             <button type="submit"
-                    class="btn btn-info"
-                    id="fix_ok_btn">수정하기</button>
+                    class="btn btn-info">수정하기</button>
             <button type="reset"
                     class="btn btn-danger"
                     onclick="history.back()">취소</button>
