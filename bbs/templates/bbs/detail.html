@@ -1,9 +1,10 @@
 {% extends 'base.html' %}
 {% block html_body %}
+
 <script src="/static/js/del_btn.js"></script>
 <script src="/static/js/fix_btn.js"></script>
-<script src="/static/js/del_btn.js"></script>
 <script src="/static/js/like_btn.js"></script>
+
 <div class="container">
 
     <h1>글 내용보기</h1>
@@ -27,7 +28,7 @@
     </div>
     <p></p>
     <textarea readonly class="container-fluid">{{ board_objects.b_content }}</textarea>
-    <div align="right">
+    <div style="float:right">
         <button type="button"
                 class="btn btn-success"
                 onclick="location.href='/bbs/list/'">목록으로</button>
@@ -38,15 +39,11 @@
         <button type="button"
                 class="btn btn-danger"
                 id="del_btn"
-                data-pageid={{ board_objects.id }}>삭제하기</button>
+                data-uri="{% url 'bbs:b_delete' board_objects.id  %}">삭제하기</button>
         <button type="button"
                 class="btn btn-warning"
                 id="like_btn">좋아요</button>
     </div>
-    <form {% comment %}action={% url 'bbs:b_list' %}{% comment %}action = "" : 현재 페이지로 request를 진행{% endcomment %}
-          method="post">
-        {% csrf_token %}
 
-    </form>
 </div>
 {% endblock %}

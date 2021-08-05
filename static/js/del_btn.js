@@ -1,9 +1,8 @@
-$(function(event){
-    $('#del_btn').on('click', function(event) {
-        alert('인식 성공')
+$(document).ready(function(){
+    $('#del_btn').on('click', function() {
+        alert('인식 좀 돼라')
         if(confirm("정말로 삭제하시겠습니까?")) {
-            var delbtn = document.getElementById('del_btn')
-            document.location.href = '/bbs/'+ delbtn.dataset.pageid + '/delete/'
+            location.href = $(this).data('uri');
         }
     });
 });
