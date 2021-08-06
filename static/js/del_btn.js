@@ -1,6 +1,6 @@
 $(document).ready(function(){
     $('#del_btn').on('click', function() {
-        alert('인식 좀 돼라')
+        //alert('삭제 인식')
         if(confirm("정말로 삭제하시겠습니까?")) {
             location.href = $(this).data('b_del_url');
         }
