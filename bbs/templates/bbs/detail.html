@@ -4,6 +4,7 @@
 <script src="/static/js/del_btn.js"></script>
 <script src="/static/js/fix_btn.js"></script>
 <script src="/static/js/like_btn.js"></script>
+<script src="/static/js/list_btn.js"></script>
 
 <div class="container">
 
@@ -31,7 +32,7 @@
     <div style="float:right">
         <button type="button"
                 class="btn btn-success"
-                onclick="location.href='/bbs/list/'">목록으로</button>
+                id="list_btn">목록으로</button>
         <button type="button"
                 class="btn btn-info"
                 id="fix_btn"
@@ -39,11 +40,37 @@
         <button type="button"
                 class="btn btn-danger"
                 id="del_btn"
-                data-uri="{% url 'bbs:b_delete' board_objects.id  %}">삭제하기</button>
+                data-b_del_url="{% url 'bbs:b_delete' board_objects.id  %}">삭제하기</button>
         <button type="button"
                 class="btn btn-warning"
                 id="like_btn">좋아요</button>
     </div>
-
+    <p></p>
+    <h6>댓글</h6>
+    <div class="container" style="background-color: antiquewhite">
+        <table class="table table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col-2">작성자</th>
+                    <th scope="col-8">댓글내용</th>
+                    <th scope="col">삭제</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for post in posts %}
+                <tr>
+                    <th scope="row">{{ comment.id }}</th>
+                    <td>{{ comment.c_author }}</td>
+                    <td>{{ comment.c_content }}</td>
+                    <td><button type="button"
+                                class="btn btn-danger"
+                                id="comment_del_btn"
+                                data-c_del_url="{% url 'bbs:c_delete' comment.id  %}">삭제</button></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
 </div>
 {% endblock %}

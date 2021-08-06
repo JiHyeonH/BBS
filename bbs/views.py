@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Board
+from .models import Board, Comment
 from .forms import BoardForm
 # Create your views here.
 
@@ -35,7 +35,9 @@ def b_create(request):
 
 
 def b_detail(request, post_id):
+
     board_objects = get_object_or_404(Board, pk=post_id)
+    comment_objects = Comment.objects.select_related('Board__id')
     return render(request, 'bbs/detail.html', {
         'board_objects': board_objects
     })
@@ -61,3 +63,10 @@ def b_delete(request, post_id):
     board_objects = get_object_or_404(Board, pk=post_id)
     board_objects.delete()
     return redirect('bbs:b_list')
+
+
+def c_delete(request, comment_id):
+
+    comment_objects = get_object_or_404(Board, pk=comment_id)
+    comment_objects.delete()
+    return redirect('bbs:b_detail')
