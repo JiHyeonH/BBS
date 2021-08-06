@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Board, Comment
+from .models import Board
 from .forms import BoardForm
 # Create your views here.
 
@@ -37,7 +37,7 @@ def b_create(request):
 def b_detail(request, post_id):
 
     board_objects = get_object_or_404(Board, pk=post_id)
-    comment_objects = Comment.objects.select_related('Board__id')
+    # comment_objects = Comment.objects.select_related('Board__id')
     return render(request, 'bbs/detail.html', {
         'board_objects': board_objects
     })

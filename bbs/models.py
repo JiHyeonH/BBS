@@ -15,12 +15,12 @@ class Board(models.Model):
     def __str__(self):
         return self.b_title
 
-
-class Comment(models.Model):
-
-    c_author = models.CharField(max_length=20)
-    c_content = models.CharField(max_length=100)
-    board = models.ForeignKey(Board, on_delete=models.CASCADE)
-
-    def __str__(self):
-        return self.c_content
+# 댓글은 ajax로 구현
+# class Comment(models.Model):
+#
+#     c_author = models.CharField(max_length=20)
+#     c_content = models.CharField(max_length=100)
+#     board = models.ForeignKey(Board, on_delete=models.CASCADE)
+#
+#     def __str__(self):
+#         return self.c_content

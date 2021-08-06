@@ -2,7 +2,8 @@
 
 {% block html_header %}
 
-<script src="/static/js/del_btn.js"></script>
+<script src="/static/js/b_del_btn.js"></script>
+<script src="/static/js/comment_btn.js"></script>
 <script src="/static/js/fix_btn.js"></script>
 <script src="/static/js/like_btn.js"></script>
 <script src="/static/js/list_btn.js"></script>
@@ -47,7 +48,7 @@
         <button type="button"
                 class="btn btn-danger"
                 id="del_btn"
-                data-b_del_url="{% url 'bbs:b_delete' board_objects.id  %}">삭제하기</button>
+                data-b_del_url="{% url 'bbs:b_delete' board_objects.id %}">삭제하기</button>
         <button type="button"
                 class="btn btn-warning"
                 id="like_btn">좋아요</button>
@@ -58,24 +59,17 @@
         <table class="table table-hover">
             <thead class="thead-dark">
                 <tr>
-                    <th scope="col">#</th>
-                    <th scope="col-2">작성자</th>
-                    <th scope="col-8">댓글내용</th>
+                    <th scope="col">작성자</th>
+                    <th scope="col-10">댓글내용</th>
                     <th scope="col">삭제</th>
                 </tr>
             </thead>
-            <tbody>
-            {% for post in posts %}
-                <tr>
-                    <th scope="row">{{ comment.id }}</th>
-                    <td>{{ comment.c_author }}</td>
-                    <td>{{ comment.c_content }}</td>
-                    <td><button type="button"
-                                class="btn btn-danger"
-                                id="comment_del_btn"
-                                data-c_del_url="{% url 'bbs:c_delete' comment.id  %}">삭제</button></td>
+            <tbody id="TbodyPart">
+                <tr style="background-color: lightsteelblue">
+                    <td><input id="c_writer" class="col" placeholder="작성자"></td>
+                    <td><input id="c_content" class="col-10" placeholder="댓글 내용"></td>
+                    <td><button id="comment_btn" type="submit" class="btn btn-primary">등록</button></td>
                 </tr>
-            {% endfor %}
             </tbody>
         </table>
     </div>
